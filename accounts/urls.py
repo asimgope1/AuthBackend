@@ -1,12 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.http import JsonResponse
-
-def home(request):
-    return JsonResponse({"message": "Welcome to Auth Backend 🚀"})
+from django.urls import path
+from .views import RegisterView, LoginView
 
 urlpatterns = [
-    path('', home, name='home'),  # Default Home Route
-    path('admin/', admin.site.urls),
-    path('api/auth/', include('authapi.urls')),  # Include app URLs
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
 ]
